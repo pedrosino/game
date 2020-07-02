@@ -2,6 +2,7 @@ class Jogo {
   constructor() {
     this.indice = 0;
     this.mapa = fita.mapa;
+    this.pausado = false;
   }
   
   setup() {
@@ -30,6 +31,17 @@ class Jogo {
   keyPressed(key) {
     if (key === 'ArrowUp') {
       personagem.pula();
+    }
+    if (keyCode === 32) {
+      if (this.pausado == false) {
+        noLoop();
+        trilha.pause();
+      } else {
+        loop();
+        trilha.loop();
+      }
+
+      this.pausado = !this.pausado;
     }
   }
   
