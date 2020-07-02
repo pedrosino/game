@@ -7,11 +7,11 @@ class Jogo {
   setup() {
     cenario2 = new Cenario(imagemCenario2, 5);
     cenario = new Cenario(imagemCenario, 3);
-    personagem = new Personagem(matrizPersonagem, imagemPersonagem, imagemPersonagemBrilhando, 0, 30, largura, altura, 220, 270, 0.7, 1);
+    personagem = new Personagem("bruxa", imagemPersonagem, imagemPersonagemBrilhando, 0, 30, largura, altura, larguraPersonagem, alturaPersonagem, 4, 4, 0.7, 1);
 
-    gota = new Inimigo(matrizGota, imagemGota, width, 30, 52, 52, larguraGota, alturaGota, 8, 1, 1);
-    troll = new Inimigo(matrizTroll, imagemTroll, width, 30, 200, 150, larguraTroll, alturaTroll, 8, 0.825, 0.94);
-    gotaVoadora = new Inimigo(matrizGotaVoadora, imagemGotaVoadora, width, 200, 100, 60, larguraGotaVoadora, alturaGotaVoadora, 8, 0.9, 1);
+    gota = new Inimigo("gota", imagemGota, width, 30, 52, 52, larguraGota, alturaGota, 7,4, 8, 1, 1);
+    troll = new Inimigo("troll", imagemTroll, width, 30, 200, 150, larguraTroll, alturaTroll, 7,4, 8, 0.825, 0.94);
+    gotaVoadora = new Inimigo("voadora", imagemGotaVoadora, width, 200, 100, 60, larguraGotaVoadora, alturaGotaVoadora, 4,4, 8, 0.9, 1);
 
     inimigos = [];
     inimigos.push(gota);
@@ -33,7 +33,7 @@ class Jogo {
     cenario.move();
     cenario2.exibe();
     cenario2.move();
-    personagem.exibe();
+    personagem.anima();
     personagem.cai();
     vida.draw();
 
@@ -44,7 +44,7 @@ class Jogo {
     inimigo = inimigos[linhaMapa.inimigo];
     inimigo.velocidade = linhaMapa.velocidade;
 
-    inimigo.exibe();
+    inimigo.anima();
     inimigo.move();
 
     if (inimigo.saiu()) {

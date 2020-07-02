@@ -1,6 +1,6 @@
 class Personagem extends Animacao {
-  constructor(matriz, imagem, imagem2, x, yBase, largura, altura, larguraSprite, alturaSprite, precisaoHor, precisaoVer) {
-    super(matriz, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, precisaoHor, precisaoVer);
+  constructor(nome, imagem, imagem2, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer) {
+    super(nome, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer);
 
     this.chao = height - this.altura - this.yBase;
     this.y = this.chao;
@@ -14,9 +14,7 @@ class Personagem extends Animacao {
   }
 
   exibe() {
-    image(this.qualImagem, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
-    
-    this.anima();
+    image(this.qualImagem, this.x, this.y, this.largura, this.altura, this.frameAtual % this.linhas * this.larguraSprite, Math.floor(this.frameAtual / this.linhas) * this.alturaSprite, this.larguraSprite, this.alturaSprite);
   }
 
   pula() {
@@ -54,7 +52,6 @@ class Personagem extends Animacao {
     setTimeout(()=> {
       this.qualImagem = this.imagem;
     }, 1000);
-    //image(this.imagem2, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
   }
 
   ficaInvencivel() {

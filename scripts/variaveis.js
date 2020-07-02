@@ -34,18 +34,12 @@ const altura = 135;
 
 const larguraPersonagem = 220;
 const alturaPersonagem = 270;
-let matrizPersonagem;
 
 const larguraGota = 104;
 const alturaGota = 104;
-let matrizGota;
 
 const larguraGotaVoadora = 200;
 const alturaGotaVoadora = 120;
-let matrizGotaVoadora;
 
 const larguraTroll = 400;
 const alturaTroll = 300;
-let matrizTroll;
-
-

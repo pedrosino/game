@@ -1,6 +1,6 @@
 class Animacao {
-  constructor(matriz, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, precisaoHor, precisaoVer) {
-    this.matriz = matriz;
+  constructor(nome, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer) {
+    this.nome = nome;
     this.imagem = imagem;
     this.x = x;
     this.yBase = yBase;
@@ -9,6 +9,8 @@ class Animacao {
     this.altura = altura;
     this.larguraSprite = larguraSprite;
     this.alturaSprite = alturaSprite;
+    this.linhas = linhas;
+    this.colunas = colunas;
     this.precisaoHor = precisaoHor;
     this.precisaoVer = precisaoVer;
     
@@ -18,7 +20,7 @@ class Animacao {
   }
   
   criaPoligono() {
-    // Usando um dodecaedro em vez de elipse, para poder usar o
+    // Usando um dodecágono em vez de elipse, para poder usar o
     // collidePolyPoly de https://github.com/bmoren/p5.collide2D
     this.poly = new Array(12);
     var angle = TWO_PI / this.poly.length;
@@ -31,18 +33,17 @@ class Animacao {
   }
 
   exibe() {
-    image(this.imagem, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
-    
-    this.anima();
-    /*this.desenha();*/
+    image(this.imagem, this.x, this.y, this.largura, this.altura, this.frameAtual % this.colunas * this.larguraSprite, Math.floor(this.frameAtual / this.colunas) * this.alturaSprite, this.larguraSprite, this.alturaSprite);
   }
   
   anima() {
     this.frameAtual++;
     
-    if(this.frameAtual > this.matriz.length - 1) {
+    if (this.frameAtual > this.linhas*this.colunas - 1) {
       this.frameAtual = 0;
     }
+
+    this.exibe();
   }
   
   desenha() {
