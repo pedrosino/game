@@ -1,18 +1,13 @@
 class Animacao {
-  constructor(nome, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer) {
+  //constructor(nome, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer) {
+  constructor(nome, x, yBase, largura, altura, sprite) {
     this.nome = nome;
-    this.imagem = imagem;
     this.x = x;
     this.yBase = yBase;
     this.y = height - altura - this.yBase;
     this.largura = largura;
     this.altura = altura;
-    this.larguraSprite = larguraSprite;
-    this.alturaSprite = alturaSprite;
-    this.linhas = linhas;
-    this.colunas = colunas;
-    this.precisaoHor = precisaoHor;
-    this.precisaoVer = precisaoVer;
+    this.sprite = sprite;
     
     this.frameAtual = 0;
 
@@ -26,20 +21,20 @@ class Animacao {
     var angle = TWO_PI / this.poly.length;
     for (var i = 0; i < this.poly.length; i++) {
       var a = angle * i;
-      var x = this.x + this.largura/2 + cos(a) * this.largura*this.precisaoHor/2;
-      var y = this.y + this.altura/2 + sin(a) * this.altura*this.precisaoVer/2;
+      var x = this.x + this.largura/2 + cos(a) * this.largura*this.sprite.precisaoHor/2;
+      var y = this.y + this.altura/2 + sin(a) * this.altura*this.sprite.precisaoVer/2;
       this.poly[i] = createVector(x,y);
     }
   }
 
   exibe() {
-    image(this.imagem, this.x, this.y, this.largura, this.altura, this.frameAtual % this.colunas * this.larguraSprite, Math.floor(this.frameAtual / this.colunas) * this.alturaSprite, this.larguraSprite, this.alturaSprite);
+    image(this.sprite.imagem, this.x, this.y, this.largura, this.altura, this.frameAtual % this.sprite.colunas * this.sprite.largura, Math.floor(this.frameAtual / this.sprite.colunas) * this.sprite.altura, this.sprite.largura, this.sprite.altura);
   }
   
   anima() {
     this.frameAtual++;
     
-    if (this.frameAtual > this.linhas*this.colunas - 1) {
+    if (this.frameAtual > this.sprite.linhas*this.sprite.colunas - 1) {
       this.frameAtual = 0;
     }
 

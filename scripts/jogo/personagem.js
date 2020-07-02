@@ -1,6 +1,6 @@
 class Personagem extends Animacao {
-  constructor(nome, imagem, imagem2, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer) {
-    super(nome, imagem, x, yBase, largura, altura, larguraSprite, alturaSprite, linhas, colunas, precisaoHor, precisaoVer);
+  constructor(nome, x, yBase, largura, altura, sprite, sprite2) {
+    super(nome, x, yBase, largura, altura, sprite);
 
     this.chao = height - this.altura - this.yBase;
     this.y = this.chao;
@@ -9,12 +9,12 @@ class Personagem extends Animacao {
     this.gravidade = 3;
     this.contPulo = 0;
     this.invencivel = false;
-    this.imagem2 = imagem2;
-    this.qualImagem = this.imagem;
+    this.sprite2 = sprite2;
+    this.spriteAtual = this.sprite;
   }
 
   exibe() {
-    image(this.qualImagem, this.x, this.y, this.largura, this.altura, this.frameAtual % this.linhas * this.larguraSprite, Math.floor(this.frameAtual / this.linhas) * this.alturaSprite, this.larguraSprite, this.alturaSprite);
+    image(this.spriteAtual.imagem, this.x, this.y, this.largura, this.altura, this.frameAtual % this.sprite.colunas * this.sprite.largura, Math.floor(this.frameAtual / this.sprite.colunas) * this.sprite.altura, this.sprite.largura, this.sprite.altura);
   }
 
   pula() {
@@ -48,9 +48,9 @@ class Personagem extends Animacao {
     //fill(255, 240, 50, 128);
     //rect(this.x, this.y, this.largura, this.altura);
     
-    this.qualImagem = this.imagem2;
+    this.spriteAtual = this.sprite2;
     setTimeout(()=> {
-      this.qualImagem = this.imagem;
+      this.spriteAtual = this.sprite;
     }, 1000);
   }
 

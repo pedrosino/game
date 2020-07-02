@@ -34,12 +34,17 @@ const altura = 135;
 
 const larguraPersonagem = 220;
 const alturaPersonagem = 270;
+let spritePersonagem;
+let spritePersonagem2;
 
 const larguraGota = 104;
 const alturaGota = 104;
+let spriteGota;
 
 const larguraGotaVoadora = 200;
 const alturaGotaVoadora = 120;
+let spriteGotaVoadora;
 
 const larguraTroll = 400;
 const alturaTroll = 300;
+let spriteTroll;

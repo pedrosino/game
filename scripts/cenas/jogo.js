@@ -7,11 +7,16 @@ class Jogo {
   setup() {
     cenario2 = new Cenario(imagemCenario2, 5);
     cenario = new Cenario(imagemCenario, 3);
-    personagem = new Personagem("bruxa", imagemPersonagem, imagemPersonagemBrilhando, 0, 30, largura, altura, larguraPersonagem, alturaPersonagem, 4, 4, 0.7, 1);
+    spritePersonagem = new Sprite(imagemPersonagem, larguraPersonagem, alturaPersonagem, 4, 4, 0.7, 1);
+    spritePersonagem2 = new Sprite(imagemPersonagemBrilhando, larguraPersonagem, alturaPersonagem, 4, 4, 0.7, 1);
+    personagem = new Personagem("bruxa", 0, 30, largura, altura, spritePersonagem, spritePersonagem2);
 
-    gota = new Inimigo("gota", imagemGota, width, 30, 52, 52, larguraGota, alturaGota, 7,4, 8, 1, 1);
-    troll = new Inimigo("troll", imagemTroll, width, 30, 200, 150, larguraTroll, alturaTroll, 7,4, 8, 0.825, 0.94);
-    gotaVoadora = new Inimigo("voadora", imagemGotaVoadora, width, 200, 100, 60, larguraGotaVoadora, alturaGotaVoadora, 4,4, 8, 0.9, 1);
+    spriteGota = new Sprite(imagemGota, larguraGota, alturaGota, 7, 4, 1, 1);
+    spriteGotaVoadora = new Sprite(imagemGotaVoadora, larguraGotaVoadora, alturaGotaVoadora, 4, 4, 0.9, 1);
+    spriteTroll = new Sprite(imagemTroll, larguraTroll, alturaTroll, 7, 4, 0.825, 0.94);
+    gota = new Inimigo("gota", width, 30, 52, 52, spriteGota, 8);
+    gotaVoadora = new Inimigo("voadora", width, 200, 100, 60, spriteGotaVoadora, 8);
+    troll = new Inimigo("troll", width, 30, 200, 150, spriteTroll, 8);
 
     inimigos = [];
     inimigos.push(gota);
@@ -67,6 +72,5 @@ class Jogo {
         trilha.stop();
       }
     }
-  //});
   }
 }
