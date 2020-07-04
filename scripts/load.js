@@ -10,6 +10,7 @@ function preload() {
   imagemGotaVoadora = loadImage("imagens/inimigos/gotinha-voadora.png");
   imagemGameOver = loadImage("imagens/assets/game-over.png");
   imagemVida = loadImage("imagens/assets/coracao2.png");
+  imagemPause = loadImage("imagens/pause.png");
   trilha = loadSound("sons/trilha_jogo.mp3");
   somPulo = loadSound("sons/somPulo.mp3");
   

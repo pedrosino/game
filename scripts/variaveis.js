@@ -1,5 +1,6 @@
 let abertura;
 let jogo;
+
 let imagemAbertura;
 let fonteAbertura;
 let imagemCenario;
@@ -10,24 +11,17 @@ let imagemGotaVoadora;
 let imagemTroll;
 let imagemGameOver;
 let imagemVida;
+let imagemPause;
+
+let trilha;
 let somPulo;
+
 let vida;
+let pontuacao;
 let fita;
 
 let cenaAtual = 'abertura';
 let cenas;
-
-let cenario;
-let cenario2;
-let trilha;
-let personagem;
-let gota;
-let gotaVoadora;
-let troll;
-let pontuacao;
-let inimigos;
-let inimigo;
-const listaInimigos = ["gota", "voadora", "troll"];
 
 const largura = 110;
 const altura = 135;
